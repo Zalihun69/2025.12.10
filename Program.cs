@@ -1,28 +1,57 @@
-﻿
-
-namespace ConsoleApp18
+﻿namespace ConsoleApp18
 {
-
-
     internal class Program
     {
         static void Main(string[] args)
         {
             UdvozloKep();
-            HaromszogSzerkesztheto();
-            Terulet();
             List<string> menupontok = new List<string>();
             menupontok.Add("Kerület számítása");
             menupontok.Add("Terület számítása");
             menupontok.Add("Kilépés");
             ListazMenu(menupontok);
             Console.WriteLine("Vége!");
+            Kerület();
+            BeirtKorSugara();
         }
 
+        private static void BeirtKorSugara()
+        {
+            Console.WriteLine("Háromszögbe írt kör sugarának kiszámítása:");
+            Console.Write("Add meg az a oldalt: ");
+            string a = Console.ReadLine();
+            Console.Write("Add meg a b oldalt: ");
+            string b = Console.ReadLine();
+            Console.Write("Add meg a c oldalt: ");
+            string c = Console.ReadLine();
+
+            double s = (Convert.ToDouble(a) + Convert.ToDouble(b) + Convert.ToDouble(c)) / 2;
+            double terulet = Math.Sqrt(s * (s - Convert.ToDouble(a)) * (s - Convert.ToDouble(b)) * (s - Convert.ToDouble(c)));
+            double r = terulet / s;
+            Console.WriteLine($"Háromszögbe írt kör sugara: {Math.Round(r, 2)}");
+
+        }
+
+        private static void Kerület() //(Ármin)
+        {
+            Console.WriteLine("Kerület számítása:");
+            Console.Write("Add meg az a oldalt: ");
+            string a = Console.ReadLine();
+            Console.Write("Add meg a b oldalt: ");
+            string b = Console.ReadLine();
+            Console.Write("Add meg a c oldalt: ");
+            string c = Console.ReadLine();
+
+            double Kerület = Convert.ToDouble(a) + Convert.ToDouble(b) + Convert.ToDouble(c);
+            Console.WriteLine($"A háromszög kerülete: {Kerület}");
+            
+        }
+        
         private static void ListazMenu(List<string> menupontok)
         {
             //Petra feladata
             Console.WriteLine("ide jött!");
+            throw new NotImplementedException("Még nincs kész, ezért ne használd!");
             Console.WriteLine("ide már jut el!");
         }
 
@@ -32,45 +61,7 @@ namespace ConsoleApp18
             Console.SetCursorPosition(30, 0);
             Console.WriteLine("Üdvözlöm a háromszög szuper alkalmazásban!");
 
-
-        }
-        //TODO : Bihari Balázs  (Kerület számítása)
-        private static void Terulet()
-        {
-            Console.Clear();
-            Console.WriteLine("Terület számítása");
-            Console.Write("Add meg az alapot: ");
-            double a = Convert.ToDouble(Console.ReadLine());
-
-            Console.Write("Add meg a magasságot: ");
-            double m = Convert.ToDouble(Console.ReadLine());
-
-            Console.WriteLine($"A háromszög területe: {a * m / 2}");
-
-        }
-        //TODO : Bihari Balázs  (Háromszög szerkeszthetősége)
-        private static void HaromszogSzerkesztheto()
-        {
-            Console.Write("Add meg az első oldalt: ");
-            int a = Convert.ToInt32(Console.ReadLine());
-
-            Console.Write("Add meg a második oldalt: ");
-            int b = Convert.ToInt32(Console.ReadLine());
-
-            Console.Write("Add meg a harmadik oldalt: ");
-            int c = Convert.ToInt32(Console.ReadLine());
-
-            if (a + b > c && a + c > b && b + c > a)
-            {
-                Console.WriteLine("A háromszög szerkeszthető.");
-            }
-            else
-            {
-                Console.WriteLine("A háromszög NEM szerkeszthető.");
-            }
+        
         }
     }
 }
-
-
-
